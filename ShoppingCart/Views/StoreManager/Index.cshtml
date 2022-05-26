@@ -1,0 +1,128 @@
+﻿@model IEnumerable<ShoppingCart.Models.Album>
+
+@helper Truncate(string input, int length)
+{
+    if (input.Length <= length) {
+        @input
+    } else {
+        @input.Substring(0, length)<text>...</text>
+    }
+} 
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@*<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Genre.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Artist.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Genre.Name)
+        </td>
+        <td>
+            @Truncate(item.Artist.Name, 25)
+        </td>
+        <td>
+            @Truncate(item.Title, 25)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AlbumId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AlbumId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AlbumId })
+        </td>
+    </tr>
+}
+
+</table>*@
+
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-header pb-0">
+                    <h6>Authors table</h6>
+                </div>
+
+                <div class="table-responsive p-0">
+                    <table class="table align-items-center mb-0">
+
+                        <thead>
+                            <tr>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Genre Name</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Artist.Name<</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Title</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Price</th>
+                                <th class="text-secondary opacity-7"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <div class="d-flex px-2 py-1">
+                                            <div>
+                                                <img src="~/Content/Admin/assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1" />
+
+                                            </div>
+                                            <div class="d-flex flex-column justify-content-center">
+                                                <h6 class="mb-0 text-sm">@Html.DisplayFor(modelItem => item.Artist.Name)</h6>
+                                                <p class="text-xs text-secondary mb-0"></p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <p class="text-xs font-weight-bold mb-0">@Html.DisplayFor(modelItem => item.Genre.Name)</p>
+                                        <p class="text-xs text-secondary mb-0">Organization</p>
+                                    </td>
+                                    <td class="align-middle text-center text-sm">
+                                        <span class="badge badge-sm bg-gradient-success">@Html.DisplayFor(modelItem => item.Title)</span>
+                                    </td>
+                                    <td class="align-middle text-center">
+                                        <span class="text-secondary text-xs font-weight-bold">@Html.DisplayFor(modelItem => item.Price)</span>
+                                    </td>
+
+                                    <td class="align-middle">
+                                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.ArtistId }) |
+                                            @Html.ActionLink("Details", "Details", new { id = item.ArtistId }) |
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.ArtistId })
+
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

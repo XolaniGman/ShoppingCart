@@ -1,0 +1,77 @@
+﻿@model IEnumerable<ShoppingCart.Models.Genre>
+@{
+    ViewBag.Title = "Store";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@*<h3>Browse Genres</h3>*@
+
+@*<p>
+        Select from @Model.Count() genres:
+    </p>*@
+@*<ul>
+        @foreach (var genre in Model)
+        {
+        <li>@Html.ActionLink(genre.Name, "Browse", new { genre = genre.Name })</li>
+        }
+    </ul>*@
+
+<div class="container py-5">
+    <div class="row">
+
+        <div class="col-lg-3">
+            <h1 class="h2 pb-4">CATAGORY</h1>
+            <ul class="list-unstyled templatemo-accordion">
+
+                <li class="pb-3">
+                    <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
+                        @Model.Count() TYPES OF GENRES
+                        <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
+                    </a>
+                    <ul class="collapse show list-unstyled pl-3">
+                        @foreach (var genre in Model)
+                        {
+                            <li>@Html.ActionLink(genre.Name, "Browse", new { genre = genre.Name })</li>
+                        }
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+@foreach (var genre in Model)
+{
+    <div class="container-fluid py-4">
+        <div class="fa-columns">
+            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+
+                <div class="card">
+
+                    <div class="card-body p-3">
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="numbers">
+                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Genre Name</p>
+                                    <h5 class="font-weight-bolder mb-0">
+
+                                        @Html.ActionLink(genre.Name, "Browse", new { genre = genre.Name })
+
+                                        <span class="text-success text-sm font-weight-bolder">+best100%</span>
+
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="col-4 text-end">
+                                <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                                    <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
